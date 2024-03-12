@@ -1,0 +1,12 @@
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.CORE\bin\Debug\net8.0\CaptionGenerator.CORE.deps.json
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.CORE\bin\Debug\net8.0\CaptionGenerator.CORE.dll
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.CORE\bin\Debug\net8.0\CaptionGenerator.CORE.pdb
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.CORE\obj\Debug\net8.0\CaptionGenerator.CORE.csproj.AssemblyReference.cache
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.CORE\obj\Debug\net8.0\CaptionGenerator.CORE.GeneratedMSBuildEditorConfig.editorconfig
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.CORE\obj\Debug\net8.0\CaptionGenerator.CORE.AssemblyInfoInputs.cache
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.CORE\obj\Debug\net8.0\CaptionGenerator.CORE.AssemblyInfo.cs
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.CORE\obj\Debug\net8.0\CaptionGenerator.CORE.csproj.CoreCompileInputs.cache
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.CORE\obj\Debug\net8.0\CaptionGenerator.CORE.dll
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.CORE\obj\Debug\net8.0\refint\CaptionGenerator.CORE.dll
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.CORE\obj\Debug\net8.0\CaptionGenerator.CORE.pdb
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.CORE\obj\Debug\net8.0\ref\CaptionGenerator.CORE.dll

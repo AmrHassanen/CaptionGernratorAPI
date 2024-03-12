@@ -1,0 +1,17 @@
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.EF\bin\Debug\net8.0\CaptionGenerator.EF.deps.json
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.EF\bin\Debug\net8.0\CaptionGenerator.EF.runtimeconfig.json
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.EF\bin\Debug\net8.0\CaptionGenerator.EF.dll
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.EF\bin\Debug\net8.0\CaptionGenerator.EF.pdb
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.EF\obj\Debug\net8.0\CaptionGenerator.EF.csproj.AssemblyReference.cache
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.EF\obj\Debug\net8.0\CaptionGenerator.EF.GeneratedMSBuildEditorConfig.editorconfig
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.EF\obj\Debug\net8.0\CaptionGenerator.EF.AssemblyInfoInputs.cache
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.EF\obj\Debug\net8.0\CaptionGenerator.EF.AssemblyInfo.cs
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.EF\obj\Debug\net8.0\CaptionGenerator.EF.csproj.CoreCompileInputs.cache
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.EF\obj\Debug\net8.0\CaptionGenerator.EF.dll
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.EF\obj\Debug\net8.0\refint\CaptionGenerator.EF.dll
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.EF\obj\Debug\net8.0\CaptionGenerator.EF.pdb
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.EF\obj\Debug\net8.0\CaptionGenerator.EF.genruntimeconfig.cache
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.EF\obj\Debug\net8.0\ref\CaptionGenerator.EF.dll
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.EF\bin\Debug\net8.0\CaptionGenerator.CORE.dll
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.EF\bin\Debug\net8.0\CaptionGenerator.CORE.pdb
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.EF\obj\Debug\net8.0\CaptionGenerator.EF.csproj.CopyComplete
