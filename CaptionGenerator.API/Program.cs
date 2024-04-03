@@ -4,7 +4,6 @@ using CaptionGenerator.EF.Data;
 using CaptionGenerator.EF.Helpers;
 using CaptionGenerator.EF.Repositories;
 using CaptionGenerator.EF.Services;
-using HealthTracker.EF.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -43,11 +42,13 @@ namespace CaptionGenerator.API
             builder.Services.AddScoped<IServiceUser, ServiceUser>();
             builder.Services.AddScoped<ITeamService, TeamService>();
             builder.Services.AddScoped<IMemberService, MemberService>();
+            builder.Services.AddScoped<IEndpointService, EndpointService>();
 
-            // Register the DbContext as a service with migrations assembly specified
-            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+           
+            // Register the DbContext as a service with SQLite configuration
+            var connectionString = Configuration.GetConnectionString("SQLiteConnection");
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(connectionString, b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+                options.UseSqlite(connectionString, b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
             // Configure JWT authentication
             builder.Services.AddAuthentication(options =>
@@ -71,17 +72,7 @@ namespace CaptionGenerator.API
                 };
             });
 
-            // Enable CORS
-            builder.Services.AddCors(options =>
-            {
-                options.AddDefaultPolicy(builder =>
-                {
-                    builder.AllowAnyOrigin()
-                           .AllowAnyMethod()
-                           .AllowAnyHeader();
-                });
-            });
-
+            
             // Add services to the container
             builder.Services.AddControllers();
 
@@ -119,6 +110,14 @@ namespace CaptionGenerator.API
 
             var app = builder.Build();
 
+            // Enable CORS
+            app.UseCors(builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            });
+
             // Configure the HTTP request pipeline
             if (app.Environment.IsDevelopment())
             {
@@ -132,13 +131,7 @@ namespace CaptionGenerator.API
             app.UseHttpsRedirection();
             app.UseRouting();
 
-            app.UseCors(builder =>
-            {
-                builder.AllowAnyOrigin()
-                       .AllowAnyMethod()
-                       .AllowAnyHeader();
-            });
-
+          
             app.UseAuthentication();
             app.UseAuthorization();
 

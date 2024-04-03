@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace CaptionGenerator.API.Controllers
 {
     [ApiController]
-    [Route("api/services")]
+    [Route("[controller]")]
     public class ServicesController : ControllerBase
     {
         private readonly IServiceUser _serviceUser;
@@ -18,7 +18,7 @@ namespace CaptionGenerator.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateService([FromBody] ServiceDto serviceDto)
+        public async Task<IActionResult> CreateService([FromForm] ServiceDto serviceDto)
         {
             try
             {
@@ -69,7 +69,7 @@ namespace CaptionGenerator.API.Controllers
         }
 
         [HttpPut("{serviceId}")]
-        public async Task<IActionResult> UpdateService(int serviceId, [FromBody] ServiceDto serviceDto)
+        public async Task<IActionResult> UpdateService(int serviceId, [FromForm] ServiceDto serviceDto)
         {
             try
             {

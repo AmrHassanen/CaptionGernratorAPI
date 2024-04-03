@@ -10,3 +10,4 @@ F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.CORE\obj\Debug\net8.0\
 F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.CORE\obj\Debug\net8.0\refint\CaptionGenerator.CORE.dll
 F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.CORE\obj\Debug\net8.0\CaptionGenerator.CORE.pdb
 F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.CORE\obj\Debug\net8.0\ref\CaptionGenerator.CORE.dll
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.CORE\obj\Debug\net8.0\CaptionGenerator.CORE.sourcelink.json

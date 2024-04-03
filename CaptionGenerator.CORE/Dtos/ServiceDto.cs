@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CaptionGenerator.CORE.Attributes;
+using CaptionGenerator.CORE.Settings;
+using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -20,13 +23,15 @@ namespace CaptionGenerator.CORE.Dtos
         [Required(ErrorMessage = "Number of Requests is required.")]
         public int NumberOfRequests { get; set; }
 
-        [Required(ErrorMessage = "URL is required.")]
-        public string? Url { get; set; } // Represents the endpoint URL
 
         [Required(ErrorMessage = "Image URL is required.")]
-        public string? ImageUrl { get; set; }
+        [AllowedExtension(FileSettings.AllowedExtensions),
+                    maxSizeAllowed(FileSettings.MaxFileSizeInBytes)]
+        public IFormFile? ImageUrl { get; set; }
 
         [Required(ErrorMessage = "Background Image URL is required.")]
-        public string? BackgroundImageUrl { get; set; }
+        [AllowedExtension(FileSettings.AllowedExtensions),
+            maxSizeAllowed(FileSettings.MaxFileSizeInBytes)]
+        public IFormFile? BackgroundImageUrl { get; set; }
     }
 }

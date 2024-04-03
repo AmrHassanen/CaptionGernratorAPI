@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DUj05WQnCwH6dm/gRUTUIvlGV6ZyLkHVmA9VtG3OD8EHNo/EdWGFB9mZGRfBlFLWfpEsgBmRZGOUk1WoKCjvLg==",
+  "dgSpecHash": "hjqEX5FHuY3pxZC0H/H+i+QfWPJB3U7G7EEYT8HLdczJPiHoUTNFCk0BUnfExl1mUVJgR6BkAOQGZTLGy2HSbw==",
   "success": true,
   "projectFilePath": "F:\\Projects\\CaptionImageGeneratorProject\\CaptionGenerator.CORE\\CaptionGenerator.CORE.csproj",
   "expectedPackageFiles": [
@@ -24,7 +24,10 @@
     "C:\\Users\\ENG Amr\\.nuget\\packages\\microsoft.extensions.logging\\8.0.0\\microsoft.extensions.logging.8.0.0.nupkg.sha512",
     "C:\\Users\\ENG Amr\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.0\\microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\ENG Amr\\.nuget\\packages\\microsoft.extensions.options\\8.0.2\\microsoft.extensions.options.8.0.2.nupkg.sha512",
-    "C:\\Users\\ENG Amr\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512"
+    "C:\\Users\\ENG Amr\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "C:\\Users\\ENG Amr\\.nuget\\packages\\mongodb.bson\\2.24.0\\mongodb.bson.2.24.0.nupkg.sha512",
+    "C:\\Users\\ENG Amr\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\ENG Amr\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }

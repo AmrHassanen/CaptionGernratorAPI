@@ -15,3 +15,4 @@ F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.EF\obj\Debug\net8.0\re
 F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.EF\bin\Debug\net8.0\CaptionGenerator.CORE.dll
 F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.EF\bin\Debug\net8.0\CaptionGenerator.CORE.pdb
 F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.EF\obj\Debug\net8.0\CaptionGenerator.EF.csproj.CopyComplete
+F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.EF\obj\Debug\net8.0\CaptionGenerator.EF.sourcelink.json

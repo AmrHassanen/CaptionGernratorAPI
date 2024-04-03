@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace CaptionGenerator.API.Controllers
 {
     [ApiController]
-    [Route("api/members")]
+    [Route("[controller]")]
     public class MemberController : ControllerBase
     {
         private readonly IMemberService _memberService;
@@ -16,9 +16,15 @@ namespace CaptionGenerator.API.Controllers
         {
             _memberService = memberService ?? throw new ArgumentNullException(nameof(memberService));
         }
+        [HttpGet]
+        public async Task<IActionResult> GetAllMembers()
+        {
+            var member = _memberService.GetAllMembersAsync();
+            return Ok(member);
+        }
 
         [HttpPost]
-        public async Task<IActionResult> CreateMember([FromBody] MemberDto memberDto)
+        public async Task<IActionResult> CreateMember([FromForm] MemberDto memberDto)
         {
             try
             {
@@ -41,7 +47,7 @@ namespace CaptionGenerator.API.Controllers
         }
 
         [HttpPut("{memberId}")]
-        public async Task<IActionResult> UpdateMember(int memberId, [FromBody] MemberDto memberDto)
+        public async Task<IActionResult> UpdateMember(int memberId, [FromForm] MemberDto memberDto)
         {
             try
             {

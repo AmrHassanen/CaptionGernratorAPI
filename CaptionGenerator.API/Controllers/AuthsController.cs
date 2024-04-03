@@ -1,10 +1,12 @@
 ﻿using CaptionGenerator.CORE.Dtos;
 using CaptionGenerator.CORE.Interfaces;
+using Microsoft.AspNetCore.Authentication.Facebook;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("[controller]")]
 public class AuthController : ControllerBase
 {
     private readonly IAuthUser _authUserService;
@@ -89,4 +91,5 @@ public class AuthController : ControllerBase
             return BadRequest(new { Message = "Failed to reset the password." });
         }
     }
+
 }

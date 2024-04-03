@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace CaptionGenerator.API.Controllers
 {
     [ApiController]
-    [Route("api/teams")]
+    [Route("[controller]")]
     public class TeamController : ControllerBase
     {
         private readonly ITeamService _teamService;
@@ -53,7 +53,7 @@ namespace CaptionGenerator.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateTeam([FromBody] TeamDto teamDto)
+        public async Task<IActionResult> CreateTeam([FromForm] TeamDto teamDto)
         {
             try
             {
@@ -76,7 +76,7 @@ namespace CaptionGenerator.API.Controllers
         }
 
         [HttpPut("{teamId}")]
-        public async Task<IActionResult> UpdateTeam(int teamId, [FromBody] TeamDto teamDto)
+        public async Task<IActionResult> UpdateTeam(int teamId, [FromForm] TeamDto teamDto)
         {
             try
             {

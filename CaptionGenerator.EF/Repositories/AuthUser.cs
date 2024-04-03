@@ -1,10 +1,8 @@
 ﻿using Azure.Core;
-using Azure;
 using CaptionGenerator.CORE.Authentication;
 using CaptionGenerator.CORE.Dtos;
 using CaptionGenerator.CORE.Entities;
 using CaptionGenerator.CORE.Interfaces;
-using CaptionGenerator.EF.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -21,29 +19,24 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using System.Net.Mail;
 using System.Net;
+using CaptionGenerator.EF.Helpers;
+using Microsoft.AspNetCore.Authentication;
 
-namespace HealthTracker.EF.Repositories
+namespace CaptionGenerator.EF.Repositories
 {
     public class AuthUser : IAuthUser
     {
         private readonly UserManager<ApplicationUser> _userManager;
-
-        public AuthUser(RoleManager<IdentityRole> roleManager)
-        {
-            _roleManager = roleManager;
-        }
-
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly JWT _jwt;
         private readonly ILogger<AuthUser> _logger;
 
-
-        public AuthUser(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IOptions<JWT> jwt,ILogger<AuthUser> logger)
+        public AuthUser(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IOptions<JWT> jwt, ILogger<AuthUser> logger)
         {
-            _userManager = userManager;
-            _roleManager = roleManager;
-            _jwt = jwt.Value;
-            _logger = logger;
+            _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+            _roleManager = roleManager ?? throw new ArgumentNullException(nameof(roleManager));
+            _jwt = jwt?.Value ?? throw new ArgumentNullException(nameof(jwt));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
         public async Task<CaptionGeneratorUser> RegisterAsync(RegisterModelDto registerModelDto)
         {
@@ -57,8 +50,6 @@ namespace HealthTracker.EF.Repositories
             }
             var User = new ApplicationUser
             {
-                FirstName = registerModelDto.FirstName,
-                LastName = registerModelDto.LastName,
                 Email = registerModelDto.Email,
                 UserName = registerModelDto.UserName,
             };
@@ -236,5 +227,6 @@ namespace HealthTracker.EF.Repositories
                 throw; // You may handle this exception as needed, e.g., log and return a custom response
             }
         }
+
     }
 }

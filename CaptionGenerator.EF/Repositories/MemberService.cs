@@ -1,8 +1,9 @@
-﻿// MemberService implementation
-using CaptionGenerator.CORE.Dtos;
+﻿using CaptionGenerator.CORE.Dtos;
 using CaptionGenerator.CORE.Entities;
 using CaptionGenerator.CORE.Interfaces;
 using CaptionGenerator.EF.Data;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
@@ -13,10 +14,14 @@ namespace CaptionGenerator.EF.Services
     public class MemberService : IMemberService
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly string _imagePath;
 
-        public MemberService(ApplicationDbContext context)
+        public MemberService(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
+            _webHostEnvironment = webHostEnvironment;
+            _imagePath = $"{_webHostEnvironment.WebRootPath}/assets/images/members";
         }
 
         public async Task<MemberDto> CreateMemberAsync(MemberDto memberDto)
@@ -33,19 +38,19 @@ namespace CaptionGenerator.EF.Services
                 throw new ArgumentException("Team with the provided TeamId does not exist.", nameof(memberDto.TeamId));
             }
 
+            var imageMemberName = await SaveCover(memberDto.ImageUrl);
+            var backGroundImageUrl = await SaveCover(memberDto.BackgroundImageUrl);
+
             var member = new Member
             {
-                ImageUrl = memberDto.ImageUrl,
-                BackgroundImageUrl = memberDto.BackgroundImageUrl,
+                ImageUrl = imageMemberName,
+                BackgroundImageUrl = backGroundImageUrl,
                 Email = memberDto.Email,
                 TeamId = memberDto.TeamId
             };
 
             _context.Members.Add(member);
             await _context.SaveChangesAsync();
-
-            // Update the MemberDto with the generated Id
-            
 
             return memberDto;
         }
@@ -74,10 +79,22 @@ namespace CaptionGenerator.EF.Services
                 }
             }
 
-            existingMember.ImageUrl = memberDto.ImageUrl;
-            existingMember.BackgroundImageUrl = memberDto.BackgroundImageUrl;
-            existingMember.Email = memberDto.Email;
+            var hasNewImageUrl = memberDto.ImageUrl is not null; 
+            var hasBackgroundImageUrl = memberDto.BackgroundImageUrl is not null; 
 
+            
+            existingMember.Email = memberDto.Email;
+            existingMember.TeamId = memberDto.TeamId;
+
+            if (hasNewImageUrl)
+            {
+                existingMember.ImageUrl = await SaveCover(memberDto.ImageUrl!);
+            }
+
+            if (hasBackgroundImageUrl)
+            {
+                existingMember.BackgroundImageUrl = await SaveCover(memberDto.BackgroundImageUrl!);
+            }
 
             if (memberDto.TeamId != 0)
             {
@@ -104,7 +121,7 @@ namespace CaptionGenerator.EF.Services
             return true;
         }
 
-        public async Task<MemberDto> GetMemberByIdAsync(int memberId)
+        public async Task<Member> GetMemberByIdAsync(int memberId)
         {
             var member = await _context.Members
                 .FirstOrDefaultAsync(m => m.Id == memberId);
@@ -112,17 +129,23 @@ namespace CaptionGenerator.EF.Services
             if (member == null)
             {
                 return null; // Member with the provided Id does not exist
-            }
+            }      
+            return member;
+        }
 
-            var memberDto = new MemberDto
-            {
-                ImageUrl = member.ImageUrl,
-                BackgroundImageUrl = member.BackgroundImageUrl,
-                Email = member.Email,
-                TeamId = member.TeamId
-            };
+        private async Task<string> SaveCover(IFormFile file)
+        {
+            var imageUrlName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
+            var imageUrlPath = Path.Combine(_imagePath, imageUrlName);
+            using var imageUrlStream = File.Create(imageUrlPath);
+            await file.CopyToAsync(imageUrlStream);
+            return imageUrlName;
+        }
 
-            return memberDto;
+        public async Task<List<Member>> GetAllMembersAsync()
+        {
+            var members = await _context.Members.ToListAsync();
+            return members;
         }
     }
 }

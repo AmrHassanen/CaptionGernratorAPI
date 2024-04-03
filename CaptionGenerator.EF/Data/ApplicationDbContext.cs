@@ -16,15 +16,20 @@ namespace CaptionGenerator.EF.Data
         public DbSet<EndPoint> EndPoints { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<Member> Members { get; set; }
+        public DbSet<Key> Keys { get; set; }
+        public DbSet<UserKey> UserKeys { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(builder);
+            base.OnModelCreating(modelBuilder);
+            SeedRoles(modelBuilder);
 
-            // Call the SeedRoles method to seed roles
-            SeedRoles(builder);
+            modelBuilder.Entity<EndPoint>()
+                .HasOne(e => e.Service)
+                .WithOne(s => s.EndPoint)
+                .HasForeignKey<Service>(s => s.EndPointId); // Assuming EndPointId is the foreign key property in Service
         }
-
         private void SeedRoles(ModelBuilder builder)
         {
             builder.Entity<IdentityRole>().HasData(

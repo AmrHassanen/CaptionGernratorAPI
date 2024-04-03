@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace CaptionGenerator.API.Controllers
 {
     [ApiController]
-    [Route("api/endpoints")]
+    [Route("[controller]")]
     public class EndpointsController : ControllerBase
     {
         private readonly IEndpointService _endpointService;

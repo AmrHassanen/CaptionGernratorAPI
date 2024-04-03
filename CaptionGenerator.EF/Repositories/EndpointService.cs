@@ -8,7 +8,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CaptionGenerator.EF.Services
+namespace CaptionGenerator.EF.Repositories
 {
     public class EndpointService : IEndpointService
     {

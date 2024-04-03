@@ -1,11 +1,12 @@
 ﻿using CaptionGenerator.CORE.Dtos;
+using CaptionGenerator.CORE.Entities;
 using System.Threading.Tasks;
 
 namespace CaptionGenerator.CORE.Interfaces
 {
     public interface IServiceUser
     {
-        Task<ServiceDto> GetServiceByIdAsync(int serviceId);
+        Task<Service> GetServiceByIdAsync(int serviceId);
 
         Task<ServiceDto> CreateServiceAsync(ServiceDto serviceDto);
 
