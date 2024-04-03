@@ -18,7 +18,7 @@ namespace CaptionGenerator.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateEndpoint([FromBody] EndPointDto endpointDto)
+        public async Task<IActionResult> CreateEndpoint([FromForm] EndPointDto endpointDto)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace CaptionGenerator.API.Controllers
         }
 
         [HttpPut("{endpointId}")]
-        public async Task<IActionResult> UpdateEndpoint(int endpointId, [FromBody] EndPointDto endpointDto)
+        public async Task<IActionResult> UpdateEndpoint(int endpointId, [FromForm] EndPointDto endpointDto)
         {
             try
             {

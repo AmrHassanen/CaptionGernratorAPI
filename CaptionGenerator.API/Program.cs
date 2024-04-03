@@ -1,3 +1,5 @@
+using CaptionGenerator.API.Extensions;
+using CaptionGenerator.API.Extensions.Authentication;
 using CaptionGenerator.CORE.Entities;
 using CaptionGenerator.CORE.Interfaces;
 using CaptionGenerator.EF.Data;
@@ -28,85 +30,18 @@ namespace CaptionGenerator.API
 
             // Configuration
             var Configuration = builder.Configuration;
-
-            // Configure JWT settings
-            builder.Services.Configure<JWT>(Configuration.GetSection("JWT"));
-
+            builder.Services.AddCustomServices();
+            builder.Services.AddDbContextExtension(Configuration);
+            builder.Services.AddJwtAuthentication(Configuration);
+            builder.Services.AddSwaggerGenExtension();
             // Add Identity to the project
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            // Dependency injection 
-            builder.Services.AddScoped<IAuthUser, AuthUser>();
-            builder.Services.AddScoped<IServiceUser, ServiceUser>();
-            builder.Services.AddScoped<ITeamService, TeamService>();
-            builder.Services.AddScoped<IMemberService, MemberService>();
-            builder.Services.AddScoped<IEndpointService, EndpointService>();
-
-           
-            // Register the DbContext as a service with SQLite configuration
-            var connectionString = Configuration.GetConnectionString("SQLiteConnection");
-            builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(connectionString, b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
-
-            // Configure JWT authentication
-            builder.Services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(options =>
-            {
-                options.RequireHttpsMetadata = false;
-                options.SaveToken = false;
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidIssuer = Configuration["JWT:Issuer"],
-                    ValidAudience = Configuration["JWT:Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Key"]))
-                };
-            });
-
-            
-            // Add services to the container
+           // Add services to the container
             builder.Services.AddControllers();
 
-            // Swagger/OpenAPI Configuration
-            builder.Services.AddSwaggerGen(options =>
-            {
-                options.SwaggerDoc("v1", new OpenApiInfo { Title = "Auth API", Version = "v1" });
-
-                // Add JWT authentication to Swagger
-                options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                {
-                    Description = "Please Enter a Valid Token",
-                    Name = "Authorization",
-                    In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.Http,
-                    BearerFormat = "JWT",
-                    Scheme = "Bearer"
-                });
-
-                options.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
-                    {
-                        new OpenApiSecurityScheme
-                        {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.SecurityScheme,
-                                Id = "Bearer"
-                            }
-                        },
-                        Array.Empty<string>()
-                    }
-                });
-            });
 
             var app = builder.Build();
 
