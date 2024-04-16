@@ -2807,6 +2807,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
+          "CloudinaryDotNet": "1.11.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.2",
           "Microsoft.AspNetCore.Identity.UI": "8.0.2",
           "MongoDB.Bson": "2.24.0"

@@ -2,11 +2,10 @@
 using CaptionGenerator.CORE.Entities;
 using CaptionGenerator.CORE.Interfaces;
 using CaptionGenerator.EF.Data;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Rootics.CORE.Interfaces;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace CaptionGenerator.EF.Repositories
@@ -14,48 +13,42 @@ namespace CaptionGenerator.EF.Repositories
     public class ServiceUser : IServiceUser
     {
         private readonly ApplicationDbContext _context;
-        private readonly IWebHostEnvironment _webHostEnvironment;
-        private readonly string _imagePath;
+        private readonly IPhotoService _photoService;
 
-        public ServiceUser(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
+        public ServiceUser(ApplicationDbContext context, IPhotoService photoService)
         {
-            _context = context;
-            _webHostEnvironment = webHostEnvironment;
-            _imagePath = $"{_webHostEnvironment.WebRootPath}/assets/images/services";
+            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _photoService = photoService ?? throw new ArgumentNullException(nameof(photoService));
         }
 
-        public async Task<ServiceDto> CreateServiceAsync(ServiceDto serviceDto)
+        public async Task<Service> CreateServiceAsync(ServiceDto serviceDto)
         {
             if (serviceDto == null)
             {
                 throw new ArgumentNullException(nameof(serviceDto));
             }
 
-            // Validate TeamId
-            var teamExists = await _context.Teams.AnyAsync(t => t.Id == serviceDto.TeamId);
-            if (!teamExists)
-            {
-                // Team with the provided TeamId does not exist
-                throw new ArgumentException("Team with the provided TeamId does not exist.", nameof(serviceDto.TeamId));
-            }
-            var imageTeamName = await SaveCover(serviceDto.ImageUrl!);
-            var imageBackgroundUrl = await SaveCover(serviceDto.BackgroundImageUrl!);
+            var imageUploadResult = await _photoService.AddPhotoAsync(serviceDto.ImageUrl!);
+            var backgroundImageUploadResult = await _photoService.AddPhotoAsync(serviceDto.BackgroundImageUrl!);
 
             var service = new Service
             {
-                TeamId = serviceDto.TeamId,
                 Name = serviceDto.Name,
                 Description = serviceDto.Description,
                 NumberOfRequests = serviceDto.NumberOfRequests,
-                ImageUrl = imageTeamName,
-                BackgroundImageUrl = imageBackgroundUrl
+                ImageUrl = imageUploadResult.SecureUrl.AbsoluteUri,
+                BackgroundImageUrl = backgroundImageUploadResult.SecureUrl.AbsoluteUri,
             };
 
             _context.Services.Add(service);
             await _context.SaveChangesAsync();
 
-            return serviceDto;
+            // Retrieve the newly created Service entity from the database
+            var createdService = await _context.Services.FindAsync(service.Id);
+
+            return createdService;
         }
+
 
         public async Task<bool> DeleteServiceAsync(int serviceId)
         {
@@ -63,8 +56,7 @@ namespace CaptionGenerator.EF.Repositories
 
             if (service == null)
             {
-                // Service with the provided Id does not exist
-                return false;
+                return false; // Service with the provided Id does not exist
             }
 
             _context.Services.Remove(service);
@@ -73,7 +65,7 @@ namespace CaptionGenerator.EF.Repositories
             return true;
         }
 
-        public async Task<ServiceDto> UpdateServiceAsync(int serviceId, ServiceDto serviceDto)
+        public async Task<Service> UpdateServiceAsync(int serviceId, ServiceDto serviceDto)
         {
             if (serviceDto == null)
             {
@@ -84,60 +76,60 @@ namespace CaptionGenerator.EF.Repositories
 
             if (existingService == null)
             {
-                // Service with the provided Id does not exist
                 throw new ArgumentException("Service with the provided Id does not exist.", nameof(serviceId));
             }
 
-            // Validate TeamId
-            var teamExists = await _context.Teams.AnyAsync(t => t.Id == serviceDto.TeamId);
-            if (!teamExists)
-            {
-                // Team with the provided TeamId does not exist
-                throw new ArgumentException("Team with the provided TeamId does not exist.", nameof(serviceDto.TeamId));
-            }
+            
 
             var hasNewImageUrl = serviceDto.ImageUrl is not null;
-            var hasNewBackgroundImageUrl = serviceDto.BackgroundImageUrl is not null;
+            var hasBackgroundImageUrl = serviceDto.BackgroundImageUrl is not null;
 
-            // Update existingService properties
-            existingService.TeamId = serviceDto.TeamId;
+            if (hasNewImageUrl)
+            {
+                var imageUploadResult = await _photoService.AddPhotoAsync(serviceDto.ImageUrl!);
+                existingService.ImageUrl = imageUploadResult.SecureUrl.AbsoluteUri;
+            }
+
+            if (hasBackgroundImageUrl)
+            {
+                var backgroundImageUploadResult = await _photoService.AddPhotoAsync(serviceDto.BackgroundImageUrl!);
+                existingService.BackgroundImageUrl = backgroundImageUploadResult.SecureUrl.AbsoluteUri;
+            }
+
             existingService.Name = serviceDto.Name;
             existingService.Description = serviceDto.Description;
             existingService.NumberOfRequests = serviceDto.NumberOfRequests;
 
-            if (hasNewImageUrl)
-            {
-                existingService.ImageUrl = await SaveCover(serviceDto.ImageUrl!);
-            }
-            if (hasNewBackgroundImageUrl)
-            {
-                existingService.BackgroundImageUrl = await SaveCover(serviceDto.BackgroundImageUrl!);
-            }
 
             await _context.SaveChangesAsync();
 
-            return serviceDto;
+            // Retrieve the updated Service entity from the database
+            var updatedService = await _context.Services.FindAsync(serviceId);
+
+            return updatedService;
         }
+
         public async Task<Service> GetServiceByIdAsync(int serviceId)
         {
-            // Retrieve the Service entity by its ID
-            var service = await _context.Services.FirstOrDefaultAsync(s => s.Id == serviceId);
-
-            // Check if the service exists
-            if (service == null)
-            {
-                throw new ArgumentException("Service with the provided ID does not exist.", nameof(serviceId));
-            }
+            var service = await _context.Services
+                .Include(s => s.Teams) // Include Teams related to the Service
+                    .ThenInclude(t => t.Members) // Include Members related to each Team
+                .Include(s => s.EndPoints) // Include EndPoints related to the Service
+                .FirstOrDefaultAsync(s => s.Id == serviceId);
 
             return service;
         }
-        private async Task<string> SaveCover(IFormFile file)
+
+        public async Task<List<Service>> GetAllServicesAsync()
         {
-            var imageUrlName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
-            var imageUrlPath = Path.Combine(_imagePath, imageUrlName);
-            using var imageUrlStream = File.Create(imageUrlPath);
-            await file.CopyToAsync(imageUrlStream);
-            return imageUrlName;
+            var services = await _context.Services
+                .Include(s => s.Teams) // Include Teams related to each Service
+                    .ThenInclude(t => t.Members) // Include Members related to each Team
+                .Include(s => s.EndPoints) // Include EndPoints related to each Service
+                .ToListAsync();
+
+            return services;
         }
+
     }
 }

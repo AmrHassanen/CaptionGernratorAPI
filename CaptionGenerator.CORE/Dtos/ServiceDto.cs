@@ -12,9 +12,6 @@ namespace CaptionGenerator.CORE.Dtos
 {
     public class ServiceDto
     {
-        [Required(ErrorMessage = "Team Id is required.")]
-        public int TeamId { get; set; }
-
         [Required(ErrorMessage = "Name is required.")]
         public string? Name { get; set; }
 

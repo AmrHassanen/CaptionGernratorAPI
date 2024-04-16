@@ -1646,6 +1646,7 @@
       },
       "CaptionGenerator.CORE/1.0.0": {
         "dependencies": {
+          "CloudinaryDotNet": "1.26.2",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.2",
           "Microsoft.AspNetCore.Identity.UI": "8.0.2",
           "MongoDB.Bson": "2.24.0"

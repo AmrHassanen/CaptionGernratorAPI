@@ -13,6 +13,7 @@ namespace CaptionGenerator.CORE.Dtos
 {
     public class MemberDto
     {
+        public string Name { get; set; }
         [Required(ErrorMessage = "Image URL is required.")]
         [AllowedExtension(FileSettings.AllowedExtensions),
             maxSizeAllowed(FileSettings.MaxFileSizeInBytes)]
@@ -28,7 +29,8 @@ namespace CaptionGenerator.CORE.Dtos
         [Required(ErrorMessage = "Email address is required.")]
         [EmailAddress(ErrorMessage = "Invalid email address format.")]
         public string? Email { get; set; }
-
+        public string[]? Links { get; set; }
+        public string Description { get; set; }
         // Foreign Key
         public int TeamId { get; set; }
     }

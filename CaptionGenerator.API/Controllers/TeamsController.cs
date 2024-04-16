@@ -1,5 +1,6 @@
 ﻿using CaptionGenerator.CORE.Dtos;
 using CaptionGenerator.CORE.Interfaces;
+using CaptionGenerator.EF.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,24 +13,19 @@ namespace CaptionGenerator.API.Controllers
     public class TeamController : ControllerBase
     {
         private readonly ITeamService _teamService;
+        private readonly IMemberService _memberService;
 
-        public TeamController(ITeamService teamService)
+        public TeamController(ITeamService teamService, IMemberService memberService)
         {
             _teamService = teamService ?? throw new ArgumentNullException(nameof(teamService));
+            _memberService = memberService;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllTeams()
         {
-            try
-            {
                 var teams = await _teamService.GetAllTeamsAsync();
-                return Ok(teams);
-            }
-            catch (Exception)
-            {
-                return StatusCode(500, "An error occurred while processing your request.");
-            }
+                return Ok(teams);          
         }
 
         [HttpGet("{teamId}")]
@@ -74,6 +70,7 @@ namespace CaptionGenerator.API.Controllers
                 return StatusCode(500, "An error occurred while processing your request.");
             }
         }
+
 
         [HttpPut("{teamId}")]
         public async Task<IActionResult> UpdateTeam(int teamId, [FromForm] TeamDto teamDto)

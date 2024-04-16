@@ -9,9 +9,9 @@ namespace CaptionGenerator.API.Extensions
     {
         public static void AddDbContextExtension(this IServiceCollection services, IConfiguration configuration)
         {
-            var connectionString = configuration.GetConnectionString("DefaultConnection");
+            var connectionString = configuration.GetConnectionString("SQLiteConnection");
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(connectionString, b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+                options.UseSqlite(connectionString, b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
         }
     }
 }

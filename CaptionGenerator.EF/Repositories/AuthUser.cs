@@ -1,12 +1,10 @@
 ﻿using Azure.Core;
+using Azure;
 using CaptionGenerator.CORE.Authentication;
 using CaptionGenerator.CORE.Dtos;
-using CaptionGenerator.CORE.Entities;
 using CaptionGenerator.CORE.Interfaces;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+using CaptionGenerator.EF.Helpers;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -19,24 +17,32 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using System.Net.Mail;
 using System.Net;
-using CaptionGenerator.EF.Helpers;
-using Microsoft.AspNetCore.Authentication;
+using CaptionGenerator.CORE.Entities;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Rootics.CORE.Interfaces;
 
 namespace CaptionGenerator.EF.Repositories
 {
     public class AuthUser : IAuthUser
     {
+        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly JWT _jwt;
         private readonly ILogger<AuthUser> _logger;
+        private readonly IPhotoService _photoService;
 
-        public AuthUser(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IOptions<JWT> jwt, ILogger<AuthUser> logger)
+
+
+        public AuthUser(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IOptions<JWT> jwt, ILogger<AuthUser> logger, IHttpContextAccessor httpContextAccessor, IPhotoService photoService)
         {
-            _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
-            _roleManager = roleManager ?? throw new ArgumentNullException(nameof(roleManager));
-            _jwt = jwt?.Value ?? throw new ArgumentNullException(nameof(jwt));
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _userManager = userManager;
+            _roleManager = roleManager;
+            _jwt = jwt.Value;
+            _logger = logger;
+            _httpContextAccessor = httpContextAccessor;
+            _photoService = photoService;
         }
         public async Task<CaptionGeneratorUser> RegisterAsync(RegisterModelDto registerModelDto)
         {
@@ -50,6 +56,7 @@ namespace CaptionGenerator.EF.Repositories
             }
             var User = new ApplicationUser
             {
+                PasswordHash = registerModelDto.Password,
                 Email = registerModelDto.Email,
                 UserName = registerModelDto.UserName,
             };
@@ -77,29 +84,28 @@ namespace CaptionGenerator.EF.Repositories
 
         }
 
-        public async Task<CaptionGeneratorUser> GetTokenAsync(GetTokenRequstDto getTokenRequstDto)
+        public async Task<CaptionGeneratorUser> GetTokenAsync(GetTokenRequstDto getTokenRequestDto)
         {
             var authUser = new CaptionGeneratorUser();
 
-            var User = await _userManager.FindByEmailAsync(getTokenRequstDto.Email);
-            if (User == null || !await _userManager.CheckPasswordAsync(User, getTokenRequstDto.Passward))
+            var user = await _userManager.FindByEmailAsync(getTokenRequestDto.Email); // Find by email instead of username
+            if (user == null || !await _userManager.CheckPasswordAsync(user, getTokenRequestDto.Passward))
             {
-                return new CaptionGeneratorUser { Message = "Email or Passward is incorrect" };
+                return new CaptionGeneratorUser { Message = "Email or Password is incorrect" }; // Update error message
             }
-            var jwtSecurityToken = await CreateJwtToken(User);
-            var rolesList = await _userManager.GetRolesAsync(User);
 
+            var jwtSecurityToken = await CreateJwtToken(user);
+            var rolesList = await _userManager.GetRolesAsync(user);
 
             authUser.IsAuthenticated = true;
             authUser.Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
-            authUser.Email = User.Email;
+            authUser.Email = user.Email;
             authUser.ExpiresOn = jwtSecurityToken.ValidTo;
-            authUser.UserName = User.UserName;
+            authUser.UserName = user.UserName;
             authUser.Roles = rolesList.ToList();
 
             return authUser;
         }
-
 
         public async Task<string> AddRoleAsync(RoleModelDto roleModel)
         {
@@ -123,15 +129,15 @@ namespace CaptionGenerator.EF.Repositories
             var roleClaims = new List<Claim>();
 
             foreach (var role in roles)
-                roleClaims.Add(new Claim("roles", role));
+                roleClaims.Add(new Claim(ClaimTypes.Role, role));
 
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(JwtRegisteredClaimNames.Email, user.Email),
-                new Claim("uid", user.Id)
-            }
+        new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
+        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+        new Claim(JwtRegisteredClaimNames.Email, user.Email),
+        new Claim("uid", user.Id)
+    }
             .Union(userClaims)
             .Union(roleClaims);
 
@@ -147,7 +153,6 @@ namespace CaptionGenerator.EF.Repositories
 
             return jwtSecurityToken;
         }
-
         public async Task<bool> ForgetPasswordAsync(string email)
         {
             try
@@ -228,5 +233,76 @@ namespace CaptionGenerator.EF.Repositories
             }
         }
 
+        public async Task<UserProfileDto> GetUserProfileAsync()
+        {
+            var userEmailClaim = _httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.Email);
+
+            if (string.IsNullOrEmpty(userEmailClaim))
+            {
+                return null; // Email claim not found or empty
+            }
+
+            var user = await _userManager.FindByEmailAsync(userEmailClaim);
+
+            if (user == null)
+            {
+                return null; // User not found
+            }
+
+            // Map user data to UserProfileDto object
+            var userProfileDto = new UserProfileDto
+            {
+                Email = user.Email,
+                Username = user.UserName,
+                Usage = user.Usage,
+                ImageUrl = user.ImageUrl,
+                Limit = user.Limit,
+                // Add other properties as needed
+            };
+
+            return userProfileDto;
+        }
+
+
+        public async Task<bool> UpdateUserProfileAsync(UpdateProfileDto updateProfileDto)
+        {
+            try
+            {
+                var userEmailClaim = _httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.Email);
+
+                if (string.IsNullOrEmpty(userEmailClaim))
+                {
+                    throw new Exception("Email claim not found or empty");
+                }
+
+                var user = await _userManager.FindByEmailAsync(userEmailClaim);
+
+                if (user == null)
+                {
+                    throw new Exception("User not found");
+                }
+
+                var hasNewImageUrl = updateProfileDto.ImageUrl is not null;
+
+                if (hasNewImageUrl)
+                {
+                    var imageUploadResult = await _photoService.AddPhotoAsync(updateProfileDto.ImageUrl!);
+                    user.ImageUrl = imageUploadResult.SecureUrl.AbsoluteUri;
+                }
+                // Update user profile properties based on the received DTO
+                user.UserName = updateProfileDto.Username;
+                user.Email = updateProfileDto.Email;
+                // Add other properties as needed
+
+                var result = await _userManager.UpdateAsync(user);
+
+                return result.Succeeded;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error updating user profile: {ex.Message}");
+                throw; // Re-throw the exception for the caller to handle
+            }
+        }
     }
 }

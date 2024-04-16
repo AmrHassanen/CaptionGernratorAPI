@@ -1,7 +1,7 @@
-﻿using MongoDB.Bson;
-using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+using CaptionGenerator.CORE.Interfaces;
 
 namespace CaptionGenerator.CORE.Entities
 {
@@ -9,16 +9,26 @@ namespace CaptionGenerator.CORE.Entities
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Member Ids list is required.")]
-        public List<int> MemberIds { get; set; } = new List<int>();
+        [Required(ErrorMessage = "Name is required.")]
+        public string Name { get; set; }
 
-        [Required(ErrorMessage = "Image URL is required.")]
-        public string ?ImageUrl { get; set; }
+        [Required(ErrorMessage = "Description is required.")]
+        public string Description { get; set; }
 
-        [Required(ErrorMessage = "Background Image URL is required.")]
-        public string ?BackgroundImageUrl { get; set; }
+        public string ImageUrl { get; set; }
 
-        public List<Service>? Services { get; set; }
-        public List<Member> ?Members { get; set; }
+        public string BackgroundImageUrl { get; set; }
+
+        // Navigation property to Members (One-to-Many)
+        [JsonIgnore]
+        public List<Member> Members { get; set; }
+
+        // Foreign key for Service
+        [ForeignKey("Service")]
+        public int ServiceId { get; set; }
+
+        // Navigation property for Service
+        [JsonIgnore]
+        public Service Service { get; set; }
     }
 }

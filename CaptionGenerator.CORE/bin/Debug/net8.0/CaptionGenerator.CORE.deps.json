@@ -8,12 +8,24 @@
     ".NETCoreApp,Version=v8.0": {
       "CaptionGenerator.CORE/1.0.0": {
         "dependencies": {
+          "CloudinaryDotNet": "1.11.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.2",
           "Microsoft.AspNetCore.Identity.UI": "8.0.2",
           "MongoDB.Bson": "2.24.0"
         },
         "runtime": {
           "CaptionGenerator.CORE.dll": {}
+        }
+      },
+      "CloudinaryDotNet/1.11.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.1"
+        },
+        "runtime": {
+          "lib/netstandard1.3/CloudinaryDotNet.dll": {
+            "assemblyVersion": "1.11.0.0",
+            "fileVersion": "1.11.0.0"
+          }
         }
       },
       "Microsoft.AspNetCore.Cryptography.Internal/8.0.2": {
@@ -198,6 +210,14 @@
           }
         }
       },
+      "Newtonsoft.Json/12.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.1.22727"
+          }
+        }
+      },
       "System.Memory/4.5.5": {},
       "System.Runtime.CompilerServices.Unsafe/5.0.0": {}
     }
@@ -207,6 +227,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "CloudinaryDotNet/1.11.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pPz/CnKc1kkqjRtLiXDxVl/xjFKNBEKjhSy2266LL4/Y0NngXaJVjI4Lw7Yhh+yCiwM6Rwo40V1j1jzFgoyLsA==",
+      "path": "cloudinarydotnet/1.11.0",
+      "hashPath": "cloudinarydotnet.1.11.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Cryptography.Internal/8.0.2": {
       "type": "package",
@@ -361,6 +388,13 @@
       "sha512": "sha512-n8CWaA4iTuoEQYv0+FSKNTX/hJozFQa5EgSILVNPhTGHcrbABHhpVrT1NwRRAAS6sUb8ZyhHmLPBa88LJemptA==",
       "path": "mongodb.bson/2.24.0",
       "hashPath": "mongodb.bson.2.24.0.nupkg.sha512"
+    },
+    "Newtonsoft.Json/12.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pBR3wCgYWZGiaZDYP+HHYnalVnPJlpP1q55qvVb+adrDHmFMDc1NAKio61xTwftK3Pw5h7TZJPJEEVMd6ty8rg==",
+      "path": "newtonsoft.json/12.0.1",
+      "hashPath": "newtonsoft.json.12.0.1.nupkg.sha512"
     },
     "System.Memory/4.5.5": {
       "type": "package",

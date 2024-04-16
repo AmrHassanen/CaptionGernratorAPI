@@ -1,4 +1,5 @@
 ﻿using CaptionGenerator.CORE.Attributes;
+using CaptionGenerator.CORE.Entities;
 using CaptionGenerator.CORE.Settings;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -12,10 +13,6 @@ namespace CaptionGenerator.CORE.Dtos
 {
     public class TeamDto
     {
-
-        [Required(ErrorMessage = "Member Ids list is required.")]
-        public List<int> MemberIds { get; set; } = new List<int>();
-
         [Required(ErrorMessage = "Image URL is required.")]
         [AllowedExtension(FileSettings.AllowedExtensions),
                     maxSizeAllowed(FileSettings.MaxFileSizeInBytes)]
@@ -25,5 +22,10 @@ namespace CaptionGenerator.CORE.Dtos
         [AllowedExtension(FileSettings.AllowedExtensions),
             maxSizeAllowed(FileSettings.MaxFileSizeInBytes)]
         public IFormFile? BackgroundImageUrl { get; set; }
+
+        [Required(ErrorMessage = "Name is required.")]
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public int ServiceId { get; set; }
     }
 }

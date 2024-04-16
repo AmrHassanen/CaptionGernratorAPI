@@ -12,12 +12,13 @@ namespace CaptionGenerator.EF.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        //public DbSet<UserHistory> UserHistory { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<EndPoint> EndPoints { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<Member> Members { get; set; }
-        public DbSet<Key> Keys { get; set; }
-        public DbSet<UserKey> UserKeys { get; set; }
+        //public DbSet<Key> Keys { get; set; }
+        //public DbSet<UserKey> UserKeys { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -26,9 +27,7 @@ namespace CaptionGenerator.EF.Data
             SeedRoles(modelBuilder);
 
             modelBuilder.Entity<EndPoint>()
-                .HasOne(e => e.Service)
-                .WithOne(s => s.EndPoint)
-                .HasForeignKey<Service>(s => s.EndPointId); // Assuming EndPointId is the foreign key property in Service
+                .HasOne(e => e.Service);
         }
         private void SeedRoles(ModelBuilder builder)
         {

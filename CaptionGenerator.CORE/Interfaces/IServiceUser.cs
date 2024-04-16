@@ -7,11 +7,9 @@ namespace CaptionGenerator.CORE.Interfaces
     public interface IServiceUser
     {
         Task<Service> GetServiceByIdAsync(int serviceId);
-
-        Task<ServiceDto> CreateServiceAsync(ServiceDto serviceDto);
-
-        Task<ServiceDto> UpdateServiceAsync(int serviceId, ServiceDto serviceDto);
-
+        Task<List<Service>> GetAllServicesAsync(); // New method declaration for getting all services
+        Task<Service> CreateServiceAsync(ServiceDto serviceDto);
+        Task<Service> UpdateServiceAsync(int serviceId, ServiceDto serviceDto);
         Task<bool> DeleteServiceAsync(int serviceId);
     }
 }

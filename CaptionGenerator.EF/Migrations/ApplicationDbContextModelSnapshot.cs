@@ -17,21 +17,6 @@ namespace CaptionGenerator.EF.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.3");
 
-            modelBuilder.Entity("ApplicationUserService", b =>
-                {
-                    b.Property<int>("ServicesId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("UsersId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ServicesId", "UsersId");
-
-                    b.HasIndex("UsersId");
-
-                    b.ToTable("ApplicationUserService");
-                });
-
             modelBuilder.Entity("CaptionGenerator.CORE.Entities.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -112,40 +97,25 @@ namespace CaptionGenerator.EF.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Body")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("ServiceId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Url")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("WaysToUse")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ServiceId");
+
                     b.ToTable("EndPoints");
-                });
-
-            modelBuilder.Entity("CaptionGenerator.CORE.Entities.Key", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Limit")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("RateLimit")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Usage")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Keys");
                 });
 
             modelBuilder.Entity("CaptionGenerator.CORE.Entities.Member", b =>
@@ -158,6 +128,10 @@ namespace CaptionGenerator.EF.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -167,6 +141,10 @@ namespace CaptionGenerator.EF.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Links")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("TeamId")
@@ -190,10 +168,8 @@ namespace CaptionGenerator.EF.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("EndPointId")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("ImageUrl")
                         .IsRequired()
@@ -206,15 +182,7 @@ namespace CaptionGenerator.EF.Migrations
                     b.Property<int>("NumberOfRequests")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("TeamId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("EndPointId")
-                        .IsUnique();
-
-                    b.HasIndex("TeamId");
 
                     b.ToTable("Services");
                 });
@@ -229,39 +197,26 @@ namespace CaptionGenerator.EF.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("ImageUrl")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("MemberIds")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("ServiceId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ServiceId");
 
                     b.ToTable("Teams");
-                });
-
-            modelBuilder.Entity("CaptionGenerator.CORE.Entities.UserKey", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("ApplicationUserId")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("KeyId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApplicationUserId");
-
-                    b.HasIndex("KeyId");
-
-                    b.ToTable("UserKeys");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -292,14 +247,14 @@ namespace CaptionGenerator.EF.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "be5b935c-e6e1-4d03-a2f1-4e4d03d980b9",
+                            Id = "f7b0bacd-9700-443f-84c0-0e91586e8a8d",
                             ConcurrencyStamp = "1",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "52006fcf-551a-4438-bfcd-7fb4fde17299",
+                            Id = "16d4dc94-45d8-48e0-9a94-edd67e58308b",
                             ConcurrencyStamp = "2",
                             Name = "User",
                             NormalizedName = "USER"
@@ -408,19 +363,15 @@ namespace CaptionGenerator.EF.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("ApplicationUserService", b =>
+            modelBuilder.Entity("CaptionGenerator.CORE.Entities.EndPoint", b =>
                 {
-                    b.HasOne("CaptionGenerator.CORE.Entities.Service", null)
-                        .WithMany()
-                        .HasForeignKey("ServicesId")
+                    b.HasOne("CaptionGenerator.CORE.Entities.Service", "Service")
+                        .WithMany("EndPoints")
+                        .HasForeignKey("ServiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CaptionGenerator.CORE.Entities.ApplicationUser", null)
-                        .WithMany()
-                        .HasForeignKey("UsersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Service");
                 });
 
             modelBuilder.Entity("CaptionGenerator.CORE.Entities.Member", b =>
@@ -434,42 +385,15 @@ namespace CaptionGenerator.EF.Migrations
                     b.Navigation("Team");
                 });
 
-            modelBuilder.Entity("CaptionGenerator.CORE.Entities.Service", b =>
+            modelBuilder.Entity("CaptionGenerator.CORE.Entities.Team", b =>
                 {
-                    b.HasOne("CaptionGenerator.CORE.Entities.EndPoint", "EndPoint")
-                        .WithOne("Service")
-                        .HasForeignKey("CaptionGenerator.CORE.Entities.Service", "EndPointId")
+                    b.HasOne("CaptionGenerator.CORE.Entities.Service", "Service")
+                        .WithMany("Teams")
+                        .HasForeignKey("ServiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CaptionGenerator.CORE.Entities.Team", "Team")
-                        .WithMany("Services")
-                        .HasForeignKey("TeamId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("EndPoint");
-
-                    b.Navigation("Team");
-                });
-
-            modelBuilder.Entity("CaptionGenerator.CORE.Entities.UserKey", b =>
-                {
-                    b.HasOne("CaptionGenerator.CORE.Entities.ApplicationUser", "ApplicationUser")
-                        .WithMany("UserKeys")
-                        .HasForeignKey("ApplicationUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CaptionGenerator.CORE.Entities.Key", "Key")
-                        .WithMany("UserKeys")
-                        .HasForeignKey("KeyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ApplicationUser");
-
-                    b.Navigation("Key");
+                    b.Navigation("Service");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -523,27 +447,16 @@ namespace CaptionGenerator.EF.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CaptionGenerator.CORE.Entities.ApplicationUser", b =>
+            modelBuilder.Entity("CaptionGenerator.CORE.Entities.Service", b =>
                 {
-                    b.Navigation("UserKeys");
-                });
+                    b.Navigation("EndPoints");
 
-            modelBuilder.Entity("CaptionGenerator.CORE.Entities.EndPoint", b =>
-                {
-                    b.Navigation("Service")
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("CaptionGenerator.CORE.Entities.Key", b =>
-                {
-                    b.Navigation("UserKeys");
+                    b.Navigation("Teams");
                 });
 
             modelBuilder.Entity("CaptionGenerator.CORE.Entities.Team", b =>
                 {
                     b.Navigation("Members");
-
-                    b.Navigation("Services");
                 });
 #pragma warning restore 612, 618
         }

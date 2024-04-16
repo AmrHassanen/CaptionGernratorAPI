@@ -1,9 +1,9 @@
 ﻿using CaptionGenerator.CORE.Dtos;
 using CaptionGenerator.CORE.Interfaces;
-using Microsoft.AspNetCore.Authentication.Facebook;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 [ApiController]
 [Route("[controller]")]
@@ -91,5 +91,43 @@ public class AuthController : ControllerBase
             return BadRequest(new { Message = "Failed to reset the password." });
         }
     }
+    [HttpGet("profile")]
+    [Authorize(AuthenticationSchemes = "Bearer")]
+    public async Task<IActionResult> GetUserProfile()
+    {
+        // Retrieve user data from the current context (e.g., using User.Identity.Name)
+        var userEmail = User.Identity.Name; // Assuming email is used for authentication
 
+        // Retrieve user profile data from your service or repository
+        var userProfile = await _authUserService.GetUserProfileAsync();
+
+        if (userProfile != null)
+        {
+            return Ok(userProfile); // Return user profile data
+        }
+        else
+        {
+            return NotFound(new { Message = "User profile not found." });
+        }
+    }
+
+    [HttpPut("profile")]
+    [Authorize(AuthenticationSchemes = "Bearer")]
+    public async Task<IActionResult> UpdateUserProfile([FromForm] UpdateProfileDto updateProfileDto)
+    {
+        // Retrieve user data from the current context (e.g., using User.Identity.Name)
+        var userEmail = User.Identity.Name; // Assuming email is used for authentication
+
+        // Update user profile data based on the received parameters
+        var result = await _authUserService.UpdateUserProfileAsync(updateProfileDto);
+
+        if (result)
+        {
+            return Ok(new { Message = "Profile updated successfully." });
+        }
+        else
+        {
+            return BadRequest(new { Message = "Failed to update profile." });
+        }
+    }
 }

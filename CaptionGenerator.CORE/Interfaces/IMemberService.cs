@@ -12,6 +12,8 @@ namespace CaptionGenerator.CORE.Interfaces
         Task<MemberDto> UpdateMemberAsync(int memberId, MemberDto memberDto);
         Task<bool> DeleteMemberAsync(int memberId);
         Task<Member> GetMemberByIdAsync(int memberId);
+        Task<bool> MemberExistsAsync(int memberId);
+
 
     }
 }

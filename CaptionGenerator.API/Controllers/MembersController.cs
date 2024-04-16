@@ -1,5 +1,6 @@
 ﻿using CaptionGenerator.CORE.Dtos;
 using CaptionGenerator.CORE.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -19,8 +20,8 @@ namespace CaptionGenerator.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllMembers()
         {
-            var member = _memberService.GetAllMembersAsync();
-            return Ok(member);
+            var members = await _memberService.GetAllMembersAsync();
+            return Ok(members);
         }
 
         [HttpPost]
@@ -40,10 +41,7 @@ namespace CaptionGenerator.API.Controllers
             {
                 return BadRequest(ex.Message);
             }
-            catch (Exception)
-            {
-                return StatusCode(500, "An error occurred while processing your request.");
-            }
+            
         }
 
         [HttpPut("{memberId}")]

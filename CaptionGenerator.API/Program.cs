@@ -18,7 +18,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Rootics.EF.Helpers;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace CaptionGenerator.API
 {
@@ -30,6 +32,17 @@ namespace CaptionGenerator.API
 
             // Configuration
             var Configuration = builder.Configuration;
+
+            // Configure Cloudinary settings
+            builder.Services.Configure<CloudinarySettings>(Configuration.GetSection("Cloudinary"));
+
+
+            builder.Services.AddControllersWithViews()
+        .AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+        });
+
             builder.Services.AddCustomServices();
             builder.Services.AddDbContextExtension(Configuration);
             builder.Services.AddJwtAuthentication(Configuration);

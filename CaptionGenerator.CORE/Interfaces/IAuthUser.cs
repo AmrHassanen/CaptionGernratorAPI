@@ -1,5 +1,6 @@
 ﻿using CaptionGenerator.CORE.Authentication;
 using CaptionGenerator.CORE.Dtos;
+using CaptionGenerator.CORE.Entities;
 using Microsoft.AspNetCore.Authentication;
 
 namespace CaptionGenerator.CORE.Interfaces
@@ -11,5 +12,7 @@ namespace CaptionGenerator.CORE.Interfaces
         Task<string> AddRoleAsync(RoleModelDto roleModel);
         Task<bool> ForgetPasswordAsync(string email);
         Task<bool> ResetPasswordAsync(ResetPasswordDto resetPasswordDto);
+        Task<UserProfileDto> GetUserProfileAsync();
+        Task<bool> UpdateUserProfileAsync(UpdateProfileDto updateProfileDto);
     }
 }

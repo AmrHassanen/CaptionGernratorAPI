@@ -1,40 +1,40 @@
-﻿// TeamService implementation
-using CaptionGenerator.CORE.Dtos;
+﻿using CaptionGenerator.CORE.Dtos;
 using CaptionGenerator.CORE.Entities;
 using CaptionGenerator.CORE.Interfaces;
 using CaptionGenerator.EF.Data;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Rootics.CORE.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using static MongoDB.Bson.Serialization.Serializers.SerializerHelper;
 
 namespace CaptionGenerator.EF.Repositories
 {
     public class TeamService : ITeamService
     {
         private readonly ApplicationDbContext _context;
-        private readonly IWebHostEnvironment _webHostEnvironment;
-        private readonly string _imagePath;
+        private readonly IPhotoService _photoService;
 
-        public TeamService(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
+        public TeamService(ApplicationDbContext context, IPhotoService photoService)
         {
             _context = context;
-            _webHostEnvironment = webHostEnvironment;
-            _imagePath = $"{_webHostEnvironment.WebRootPath}/assets/images/teams";
+            _photoService = photoService;
         }
 
         public async Task<List<Team>> GetAllTeamsAsync()
         {
-            var teams = await _context.Teams.ToListAsync();
-            return teams;
+             var teams = await _context.Teams
+            .Include(t => t.Members) // Include members
+            .ToListAsync();
+             return teams;
         }
+
         public async Task<Team> GetTeamByIdAsync(int teamId)
         {
             var team = await _context.Teams
-                .Include(t => t.Members) // Include related Members if needed
+                .Include(t => t.Members)
                 .FirstOrDefaultAsync(t => t.Id == teamId);
 
             return team;
@@ -42,14 +42,16 @@ namespace CaptionGenerator.EF.Repositories
 
         public async Task<Team> CreateTeamAsync(TeamDto teamDto)
         {
-            var imageTeamName = await SaveCover(teamDto.ImageUrl!);
-            var imageBackgroundUrl = await SaveCover(teamDto.BackgroundImageUrl!);
+            var imageUploadResult = await _photoService.AddPhotoAsync(teamDto.ImageUrl!);
+            var backgroundImageUploadResult = await _photoService.AddPhotoAsync(teamDto.BackgroundImageUrl!);
 
             var team = new Team
             {
-                MemberIds = teamDto.MemberIds,
-                ImageUrl = imageTeamName,
-                BackgroundImageUrl = imageBackgroundUrl
+                ImageUrl = imageUploadResult.SecureUrl.AbsoluteUri, // Assuming Url property contains the image URL
+                BackgroundImageUrl = backgroundImageUploadResult.SecureUrl.AbsoluteUri,
+                Description = teamDto.Description,
+                Name = teamDto.Name,
+                ServiceId = teamDto.ServiceId,
             };
 
             _context.Teams.Add(team);
@@ -57,7 +59,6 @@ namespace CaptionGenerator.EF.Repositories
 
             return team; // Return the newly created team entity
         }
-
 
         public async Task<Team> UpdateTeamAsync(int teamId, TeamDto teamDto)
         {
@@ -71,23 +72,27 @@ namespace CaptionGenerator.EF.Repositories
             var hasNewImageUrl = teamDto.ImageUrl is not null;
             var hasNewBackgroundImageUrl = teamDto.BackgroundImageUrl is not null;
 
-            existingTeam.MemberIds = teamDto.MemberIds;
 
             if (hasNewImageUrl)
             {
-                existingTeam.ImageUrl = await SaveCover(teamDto.ImageUrl!);
+                var imageUploadResult = await _photoService.AddPhotoAsync(teamDto.ImageUrl!);
+                existingTeam.ImageUrl = imageUploadResult.SecureUrl.AbsoluteUri; // Assuming Url property contains the image URL
             }
+
             if (hasNewBackgroundImageUrl)
             {
-                existingTeam.BackgroundImageUrl = await SaveCover(teamDto.BackgroundImageUrl!);
+                var backgroundImageUploadResult = await _photoService.AddPhotoAsync(teamDto.BackgroundImageUrl!);
+                existingTeam.BackgroundImageUrl = backgroundImageUploadResult.SecureUrl.AbsoluteUri;
             }
+            existingTeam.Description = teamDto.Description;
+            existingTeam.Name = teamDto.Name;
+            existingTeam.ServiceId = teamDto.ServiceId;
 
             _context.Update(existingTeam);
             await _context.SaveChangesAsync();
 
             return existingTeam; // Return the updated team entity
         }
-
 
         public async Task<bool> DeleteTeamAsync(int teamId)
         {
@@ -102,14 +107,6 @@ namespace CaptionGenerator.EF.Repositories
             await _context.SaveChangesAsync();
 
             return true;
-        }
-        private async Task<string> SaveCover(IFormFile file)
-        {
-            var imageUrlName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
-            var imageUrlPath = Path.Combine(_imagePath, imageUrlName);
-            using var imageUrlStream = File.Create(imageUrlPath);
-            await file.CopyToAsync(imageUrlStream);
-            return imageUrlName;
         }
     }
 }
