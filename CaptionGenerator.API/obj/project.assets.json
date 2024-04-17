@@ -8508,23 +8508,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ENG Amr\\.nuget\\packages\\": {},
+    "C:\\Users\\Mostafa Elsayad\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Projects\\CaptionImageGeneratorProject\\CaptionGenerator.API\\CaptionGenerator.API.csproj",
+      "projectUniqueName": "D:\\neural network and arabization project\\github\\CaptionGenerator.API\\CaptionGenerator.API.csproj",
       "projectName": "CaptionGenerator.API",
-      "projectPath": "F:\\Projects\\CaptionImageGeneratorProject\\CaptionGenerator.API\\CaptionGenerator.API.csproj",
-      "packagesPath": "C:\\Users\\ENG Amr\\.nuget\\packages\\",
-      "outputPath": "F:\\Projects\\CaptionImageGeneratorProject\\CaptionGenerator.API\\obj\\",
+      "projectPath": "D:\\neural network and arabization project\\github\\CaptionGenerator.API\\CaptionGenerator.API.csproj",
+      "packagesPath": "C:\\Users\\Mostafa Elsayad\\.nuget\\packages\\",
+      "outputPath": "D:\\neural network and arabization project\\github\\CaptionGenerator.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\ENG Amr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Mostafa Elsayad\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -8533,17 +8533,18 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "F:\\Projects\\CaptionImageGeneratorProject\\CaptionGenerator.CORE\\CaptionGenerator.CORE.csproj": {
-              "projectPath": "F:\\Projects\\CaptionImageGeneratorProject\\CaptionGenerator.CORE\\CaptionGenerator.CORE.csproj"
+            "D:\\neural network and arabization project\\github\\CaptionGenerator.CORE\\CaptionGenerator.CORE.csproj": {
+              "projectPath": "D:\\neural network and arabization project\\github\\CaptionGenerator.CORE\\CaptionGenerator.CORE.csproj"
             },
-            "F:\\Projects\\CaptionImageGeneratorProject\\CaptionGenerator.EF\\CaptionGenerator.EF.csproj": {
-              "projectPath": "F:\\Projects\\CaptionImageGeneratorProject\\CaptionGenerator.EF\\CaptionGenerator.EF.csproj"
+            "D:\\neural network and arabization project\\github\\CaptionGenerator.EF\\CaptionGenerator.EF.csproj": {
+              "projectPath": "D:\\neural network and arabization project\\github\\CaptionGenerator.EF\\CaptionGenerator.EF.csproj"
             }
           }
         }
@@ -8552,6 +8553,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -8604,7 +8610,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

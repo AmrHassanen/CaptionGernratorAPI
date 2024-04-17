@@ -11,3 +11,16 @@ F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.CORE\obj\Debug\net8.0\
 F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.CORE\obj\Debug\net8.0\CaptionGenerator.CORE.pdb
 F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.CORE\obj\Debug\net8.0\ref\CaptionGenerator.CORE.dll
 F:\Projects\CaptionImageGeneratorProject\CaptionGenerator.CORE\obj\Debug\net8.0\CaptionGenerator.CORE.sourcelink.json
+D:\neural network and arabization project\github\CaptionGenerator.CORE\bin\Debug\net8.0\CaptionGenerator.CORE.deps.json
+D:\neural network and arabization project\github\CaptionGenerator.CORE\bin\Debug\net8.0\CaptionGenerator.CORE.dll
+D:\neural network and arabization project\github\CaptionGenerator.CORE\bin\Debug\net8.0\CaptionGenerator.CORE.pdb
+D:\neural network and arabization project\github\CaptionGenerator.CORE\obj\Debug\net8.0\CaptionGenerator.CORE.csproj.AssemblyReference.cache
+D:\neural network and arabization project\github\CaptionGenerator.CORE\obj\Debug\net8.0\CaptionGenerator.CORE.GeneratedMSBuildEditorConfig.editorconfig
+D:\neural network and arabization project\github\CaptionGenerator.CORE\obj\Debug\net8.0\CaptionGenerator.CORE.AssemblyInfoInputs.cache
+D:\neural network and arabization project\github\CaptionGenerator.CORE\obj\Debug\net8.0\CaptionGenerator.CORE.AssemblyInfo.cs
+D:\neural network and arabization project\github\CaptionGenerator.CORE\obj\Debug\net8.0\CaptionGenerator.CORE.csproj.CoreCompileInputs.cache
+D:\neural network and arabization project\github\CaptionGenerator.CORE\obj\Debug\net8.0\CaptionGenerator.CORE.sourcelink.json
+D:\neural network and arabization project\github\CaptionGenerator.CORE\obj\Debug\net8.0\CaptionGenerator.CORE.dll
+D:\neural network and arabization project\github\CaptionGenerator.CORE\obj\Debug\net8.0\refint\CaptionGenerator.CORE.dll
+D:\neural network and arabization project\github\CaptionGenerator.CORE\obj\Debug\net8.0\CaptionGenerator.CORE.pdb
+D:\neural network and arabization project\github\CaptionGenerator.CORE\obj\Debug\net8.0\ref\CaptionGenerator.CORE.dll

@@ -17,6 +17,7 @@ namespace CaptionGenerator.API.Extensions
             services.AddScoped<IMemberService, MemberService>();
             services.AddScoped<IEndpointService, EndpointService>();
             services.AddScoped<IPhotoService, PhotoService>();
+            services.AddScoped<IkeyService, KeyService>();
 
         }
     }

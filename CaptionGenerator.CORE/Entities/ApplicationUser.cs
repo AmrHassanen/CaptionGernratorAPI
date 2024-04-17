@@ -10,7 +10,7 @@ namespace CaptionGenerator.CORE.Entities
 
         // Navigation property to UserKey join entity
         [JsonIgnore]
-        //public ICollection<UserKey> UserKeys { get; set; }
+        public ICollection<UserKey> UserKeys { get; set; }
 
         // Define other properties as needed
         public int Limit { get; set; } = 1000;

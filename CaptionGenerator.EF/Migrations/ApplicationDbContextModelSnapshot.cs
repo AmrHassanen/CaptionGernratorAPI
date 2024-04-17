@@ -118,6 +118,26 @@ namespace CaptionGenerator.EF.Migrations
                     b.ToTable("EndPoints");
                 });
 
+            modelBuilder.Entity("CaptionGenerator.CORE.Entities.Key", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Limit")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("RateLimit")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Usage")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Keys");
+                });
+
             modelBuilder.Entity("CaptionGenerator.CORE.Entities.Member", b =>
                 {
                     b.Property<int>("Id")
@@ -219,6 +239,28 @@ namespace CaptionGenerator.EF.Migrations
                     b.ToTable("Teams");
                 });
 
+            modelBuilder.Entity("CaptionGenerator.CORE.Entities.UserKey", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ApplicationUserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("KeyId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("KeyId");
+
+                    b.ToTable("UserKeys");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -247,14 +289,14 @@ namespace CaptionGenerator.EF.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f7b0bacd-9700-443f-84c0-0e91586e8a8d",
+                            Id = "73703b38-f867-47aa-8487-23492b589ec5",
                             ConcurrencyStamp = "1",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "16d4dc94-45d8-48e0-9a94-edd67e58308b",
+                            Id = "0068ec38-6260-487d-a80e-2319e1d3d8a2",
                             ConcurrencyStamp = "2",
                             Name = "User",
                             NormalizedName = "USER"
@@ -396,6 +438,25 @@ namespace CaptionGenerator.EF.Migrations
                     b.Navigation("Service");
                 });
 
+            modelBuilder.Entity("CaptionGenerator.CORE.Entities.UserKey", b =>
+                {
+                    b.HasOne("CaptionGenerator.CORE.Entities.ApplicationUser", "ApplicationUser")
+                        .WithMany("UserKeys")
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CaptionGenerator.CORE.Entities.Key", "Key")
+                        .WithMany("UserKeys")
+                        .HasForeignKey("KeyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Key");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -445,6 +506,16 @@ namespace CaptionGenerator.EF.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("CaptionGenerator.CORE.Entities.ApplicationUser", b =>
+                {
+                    b.Navigation("UserKeys");
+                });
+
+            modelBuilder.Entity("CaptionGenerator.CORE.Entities.Key", b =>
+                {
+                    b.Navigation("UserKeys");
                 });
 
             modelBuilder.Entity("CaptionGenerator.CORE.Entities.Service", b =>

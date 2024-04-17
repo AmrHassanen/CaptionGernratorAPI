@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CaptionGenerator.CORE")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6566968a3808f680b4806f1a43058281462e063d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+53833b18ffc810ed04fde04eb7bac26fc68f88c9")]
 [assembly: System.Reflection.AssemblyProductAttribute("CaptionGenerator.CORE")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CaptionGenerator.CORE")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

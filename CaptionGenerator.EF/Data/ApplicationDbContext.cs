@@ -17,8 +17,8 @@ namespace CaptionGenerator.EF.Data
         public DbSet<EndPoint> EndPoints { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<Member> Members { get; set; }
-        //public DbSet<Key> Keys { get; set; }
-        //public DbSet<UserKey> UserKeys { get; set; }
+        public DbSet<Key> Keys { get; set; }
+        public DbSet<UserKey> UserKeys { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
