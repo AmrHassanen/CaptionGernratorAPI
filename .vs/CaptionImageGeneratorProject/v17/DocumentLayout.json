@@ -3,32 +3,64 @@
   "WorkspaceRootPath": "D:\\neural network and arabization project\\github\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\neural network and arabization project\\github\\CaptionGenerator.EF\\Migrations\\20240417152304_Update16.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CaptionGenerator.EF\\Migrations\\20240417152304_Update16.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B7F05EC2-36DB-4CA2-B633-0971CA0DE6FC}|CaptionGenerator.API\\CaptionGenerator.API.csproj|d:\\neural network and arabization project\\github\\captiongenerator.api\\middlewares\\ratelimitingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7F05EC2-36DB-4CA2-B633-0971CA0DE6FC}|CaptionGenerator.API\\CaptionGenerator.API.csproj|solutionrelative:captiongenerator.api\\middlewares\\ratelimitingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5562B365-4C8C-46E1-9552-9FA723DE639B}|CaptionGenerator.EF\\CaptionGenerator.EF.csproj|d:\\neural network and arabization project\\github\\captiongenerator.ef\\repositories\\keyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5562B365-4C8C-46E1-9552-9FA723DE639B}|CaptionGenerator.EF\\CaptionGenerator.EF.csproj|solutionrelative:captiongenerator.ef\\repositories\\keyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{75008C82-4ABF-4D49-B455-82396D271A05}|CaptionGenerator.CORE\\CaptionGenerator.CORE.csproj|d:\\neural network and arabization project\\github\\captiongenerator.core\\entities\\key.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75008C82-4ABF-4D49-B455-82396D271A05}|CaptionGenerator.CORE\\CaptionGenerator.CORE.csproj|solutionrelative:captiongenerator.core\\entities\\key.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7F05EC2-36DB-4CA2-B633-0971CA0DE6FC}|CaptionGenerator.API\\CaptionGenerator.API.csproj|d:\\neural network and arabization project\\github\\captiongenerator.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7F05EC2-36DB-4CA2-B633-0971CA0DE6FC}|CaptionGenerator.API\\CaptionGenerator.API.csproj|solutionrelative:captiongenerator.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{75008C82-4ABF-4D49-B455-82396D271A05}|CaptionGenerator.CORE\\CaptionGenerator.CORE.csproj|d:\\neural network and arabization project\\github\\captiongenerator.core\\interfaces\\ikeyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{75008C82-4ABF-4D49-B455-82396D271A05}|CaptionGenerator.CORE\\CaptionGenerator.CORE.csproj|solutionrelative:captiongenerator.core\\interfaces\\ikeyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7F05EC2-36DB-4CA2-B633-0971CA0DE6FC}|CaptionGenerator.API\\CaptionGenerator.API.csproj|d:\\neural network and arabization project\\github\\captiongenerator.api\\controllers\\keycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7F05EC2-36DB-4CA2-B633-0971CA0DE6FC}|CaptionGenerator.API\\CaptionGenerator.API.csproj|solutionrelative:captiongenerator.api\\controllers\\keycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{75008C82-4ABF-4D49-B455-82396D271A05}|CaptionGenerator.CORE\\CaptionGenerator.CORE.csproj|d:\\neural network and arabization project\\github\\captiongenerator.core\\entities\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{75008C82-4ABF-4D49-B455-82396D271A05}|CaptionGenerator.CORE\\CaptionGenerator.CORE.csproj|solutionrelative:captiongenerator.core\\entities\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{75008C82-4ABF-4D49-B455-82396D271A05}|CaptionGenerator.CORE\\CaptionGenerator.CORE.csproj|d:\\neural network and arabization project\\github\\captiongenerator.core\\entities\\endpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75008C82-4ABF-4D49-B455-82396D271A05}|CaptionGenerator.CORE\\CaptionGenerator.CORE.csproj|solutionrelative:captiongenerator.core\\entities\\endpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75008C82-4ABF-4D49-B455-82396D271A05}|CaptionGenerator.CORE\\CaptionGenerator.CORE.csproj|d:\\neural network and arabization project\\github\\captiongenerator.core\\interfaces\\iteamservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75008C82-4ABF-4D49-B455-82396D271A05}|CaptionGenerator.CORE\\CaptionGenerator.CORE.csproj|solutionrelative:captiongenerator.core\\interfaces\\iteamservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75008C82-4ABF-4D49-B455-82396D271A05}|CaptionGenerator.CORE\\CaptionGenerator.CORE.csproj|d:\\neural network and arabization project\\github\\captiongenerator.core\\interfaces\\iserviceuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75008C82-4ABF-4D49-B455-82396D271A05}|CaptionGenerator.CORE\\CaptionGenerator.CORE.csproj|solutionrelative:captiongenerator.core\\interfaces\\iserviceuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75008C82-4ABF-4D49-B455-82396D271A05}|CaptionGenerator.CORE\\CaptionGenerator.CORE.csproj|d:\\neural network and arabization project\\github\\captiongenerator.core\\interfaces\\imemberservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75008C82-4ABF-4D49-B455-82396D271A05}|CaptionGenerator.CORE\\CaptionGenerator.CORE.csproj|solutionrelative:captiongenerator.core\\interfaces\\imemberservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75008C82-4ABF-4D49-B455-82396D271A05}|CaptionGenerator.CORE\\CaptionGenerator.CORE.csproj|d:\\neural network and arabization project\\github\\captiongenerator.core\\interfaces\\iendpointservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75008C82-4ABF-4D49-B455-82396D271A05}|CaptionGenerator.CORE\\CaptionGenerator.CORE.csproj|solutionrelative:captiongenerator.core\\interfaces\\iendpointservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{75008C82-4ABF-4D49-B455-82396D271A05}|CaptionGenerator.CORE\\CaptionGenerator.CORE.csproj|d:\\neural network and arabization project\\github\\captiongenerator.core\\entities\\userkey.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{75008C82-4ABF-4D49-B455-82396D271A05}|CaptionGenerator.CORE\\CaptionGenerator.CORE.csproj|solutionrelative:captiongenerator.core\\entities\\userkey.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{75008C82-4ABF-4D49-B455-82396D271A05}|CaptionGenerator.CORE\\CaptionGenerator.CORE.csproj|d:\\neural network and arabization project\\github\\captiongenerator.core\\entities\\key.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{75008C82-4ABF-4D49-B455-82396D271A05}|CaptionGenerator.CORE\\CaptionGenerator.CORE.csproj|solutionrelative:captiongenerator.core\\entities\\key.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5562B365-4C8C-46E1-9552-9FA723DE639B}|CaptionGenerator.EF\\CaptionGenerator.EF.csproj|d:\\neural network and arabization project\\github\\captiongenerator.ef\\migrations\\20240417152304_update16.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5562B365-4C8C-46E1-9552-9FA723DE639B}|CaptionGenerator.EF\\CaptionGenerator.EF.csproj|solutionrelative:captiongenerator.ef\\migrations\\20240417152304_update16.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B7F05EC2-36DB-4CA2-B633-0971CA0DE6FC}|CaptionGenerator.API\\CaptionGenerator.API.csproj|d:\\neural network and arabization project\\github\\captiongenerator.api\\controllers\\keycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B7F05EC2-36DB-4CA2-B633-0971CA0DE6FC}|CaptionGenerator.API\\CaptionGenerator.API.csproj|solutionrelative:captiongenerator.api\\controllers\\keycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{75008C82-4ABF-4D49-B455-82396D271A05}|CaptionGenerator.CORE\\CaptionGenerator.CORE.csproj|d:\\neural network and arabization project\\github\\captiongenerator.core\\dtos\\keydto.cs||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{75008C82-4ABF-4D49-B455-82396D271A05}|CaptionGenerator.CORE\\CaptionGenerator.CORE.csproj|solutionrelative:captiongenerator.core\\dtos\\keydto.cs||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +70,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -78,15 +110,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "20240417152304_Update16.cs",
-              "DocumentMoniker": "D:\\neural network and arabization project\\github\\CaptionGenerator.EF\\Migrations\\20240417152304_Update16.cs",
-              "RelativeDocumentMoniker": "CaptionGenerator.EF\\Migrations\\20240417152304_Update16.cs",
-              "ToolTip": "D:\\neural network and arabization project\\github\\CaptionGenerator.EF\\Migrations\\20240417152304_Update16.cs",
-              "RelativeToolTip": "CaptionGenerator.EF\\Migrations\\20240417152304_Update16.cs",
-              "ViewState": "AQIAADMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\neural network and arabization project\\github\\CaptionGenerator.API\\Program.cs",
+              "RelativeDocumentMoniker": "CaptionGenerator.API\\Program.cs",
+              "ToolTip": "D:\\neural network and arabization project\\github\\CaptionGenerator.API\\Program.cs",
+              "RelativeToolTip": "CaptionGenerator.API\\Program.cs",
+              "ViewState": "AQIAADEAAAAAAAAAAAAAAD8AAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-17T15:23:04.869Z",
+              "WhenOpened": "2024-04-25T14:37:36.3Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RateLimitingMiddleware.cs",
+              "DocumentMoniker": "D:\\neural network and arabization project\\github\\CaptionGenerator.API\\Middlewares\\RateLimitingMiddleware.cs",
+              "RelativeDocumentMoniker": "CaptionGenerator.API\\Middlewares\\RateLimitingMiddleware.cs",
+              "ToolTip": "D:\\neural network and arabization project\\github\\CaptionGenerator.API\\Middlewares\\RateLimitingMiddleware.cs",
+              "RelativeToolTip": "CaptionGenerator.API\\Middlewares\\RateLimitingMiddleware.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAAAAC8AAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T18:14:05.708Z",
               "EditorCaption": ""
             },
             {
@@ -97,40 +142,139 @@
               "RelativeDocumentMoniker": "CaptionGenerator.EF\\Repositories\\KeyService.cs",
               "ToolTip": "D:\\neural network and arabization project\\github\\CaptionGenerator.EF\\Repositories\\KeyService.cs",
               "RelativeToolTip": "CaptionGenerator.EF\\Repositories\\KeyService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAEcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-17T15:20:40.006Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IkeyService.cs",
-              "DocumentMoniker": "D:\\neural network and arabization project\\github\\CaptionGenerator.CORE\\Interfaces\\IkeyService.cs",
-              "RelativeDocumentMoniker": "CaptionGenerator.CORE\\Interfaces\\IkeyService.cs",
-              "ToolTip": "D:\\neural network and arabization project\\github\\CaptionGenerator.CORE\\Interfaces\\IkeyService.cs",
-              "RelativeToolTip": "CaptionGenerator.CORE\\Interfaces\\IkeyService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-17T15:16:41.624Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "KeyController.cs",
               "DocumentMoniker": "D:\\neural network and arabization project\\github\\CaptionGenerator.API\\Controllers\\KeyController.cs",
               "RelativeDocumentMoniker": "CaptionGenerator.API\\Controllers\\KeyController.cs",
               "ToolTip": "D:\\neural network and arabization project\\github\\CaptionGenerator.API\\Controllers\\KeyController.cs",
               "RelativeToolTip": "CaptionGenerator.API\\Controllers\\KeyController.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAADwvykAAABBAAAA",
+              "ViewState": "AQIAACgAAAAAAAAAAAAkwEgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-17T13:52:43.567Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Key.cs",
+              "DocumentMoniker": "D:\\neural network and arabization project\\github\\CaptionGenerator.CORE\\Entities\\Key.cs",
+              "RelativeDocumentMoniker": "CaptionGenerator.CORE\\Entities\\Key.cs",
+              "ToolTip": "D:\\neural network and arabization project\\github\\CaptionGenerator.CORE\\Entities\\Key.cs",
+              "RelativeToolTip": "CaptionGenerator.CORE\\Entities\\Key.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T13:52:13.531Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "IkeyService.cs",
+              "DocumentMoniker": "D:\\neural network and arabization project\\github\\CaptionGenerator.CORE\\Interfaces\\IkeyService.cs",
+              "RelativeDocumentMoniker": "CaptionGenerator.CORE\\Interfaces\\IkeyService.cs",
+              "ToolTip": "D:\\neural network and arabization project\\github\\CaptionGenerator.CORE\\Interfaces\\IkeyService.cs",
+              "RelativeToolTip": "CaptionGenerator.CORE\\Interfaces\\IkeyService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T15:16:41.624Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "KeyDto.cs",
+              "DocumentMoniker": "D:\\neural network and arabization project\\github\\CaptionGenerator.CORE\\Dtos\\KeyDto.cs",
+              "RelativeDocumentMoniker": "CaptionGenerator.CORE\\Dtos\\KeyDto.cs",
+              "ToolTip": "D:\\neural network and arabization project\\github\\CaptionGenerator.CORE\\Dtos\\KeyDto.cs",
+              "RelativeToolTip": "CaptionGenerator.CORE\\Dtos\\KeyDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T18:46:50.342Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "D:\\neural network and arabization project\\github\\CaptionGenerator.CORE\\Entities\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "CaptionGenerator.CORE\\Entities\\ApplicationUser.cs",
+              "ToolTip": "D:\\neural network and arabization project\\github\\CaptionGenerator.CORE\\Entities\\ApplicationUser.cs",
+              "RelativeToolTip": "CaptionGenerator.CORE\\Entities\\ApplicationUser.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T13:52:10.288Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IServiceUser.cs",
+              "DocumentMoniker": "D:\\neural network and arabization project\\github\\CaptionGenerator.CORE\\Interfaces\\IServiceUser.cs",
+              "RelativeDocumentMoniker": "CaptionGenerator.CORE\\Interfaces\\IServiceUser.cs",
+              "ToolTip": "D:\\neural network and arabization project\\github\\CaptionGenerator.CORE\\Interfaces\\IServiceUser.cs",
+              "RelativeToolTip": "CaptionGenerator.CORE\\Interfaces\\IServiceUser.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T18:27:20.649Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ITeamService.cs",
+              "DocumentMoniker": "D:\\neural network and arabization project\\github\\CaptionGenerator.CORE\\Interfaces\\ITeamService.cs",
+              "RelativeDocumentMoniker": "CaptionGenerator.CORE\\Interfaces\\ITeamService.cs",
+              "ToolTip": "D:\\neural network and arabization project\\github\\CaptionGenerator.CORE\\Interfaces\\ITeamService.cs",
+              "RelativeToolTip": "CaptionGenerator.CORE\\Interfaces\\ITeamService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T18:27:22.867Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "EndPoint.cs",
+              "DocumentMoniker": "D:\\neural network and arabization project\\github\\CaptionGenerator.CORE\\Entities\\EndPoint.cs",
+              "RelativeDocumentMoniker": "CaptionGenerator.CORE\\Entities\\EndPoint.cs",
+              "ToolTip": "D:\\neural network and arabization project\\github\\CaptionGenerator.CORE\\Entities\\EndPoint.cs",
+              "RelativeToolTip": "CaptionGenerator.CORE\\Entities\\EndPoint.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T18:27:36.888Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IMemberService.cs",
+              "DocumentMoniker": "D:\\neural network and arabization project\\github\\CaptionGenerator.CORE\\Interfaces\\IMemberService.cs",
+              "RelativeDocumentMoniker": "CaptionGenerator.CORE\\Interfaces\\IMemberService.cs",
+              "ToolTip": "D:\\neural network and arabization project\\github\\CaptionGenerator.CORE\\Interfaces\\IMemberService.cs",
+              "RelativeToolTip": "CaptionGenerator.CORE\\Interfaces\\IMemberService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T18:27:09.628Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IEndpointService.cs",
+              "DocumentMoniker": "D:\\neural network and arabization project\\github\\CaptionGenerator.CORE\\Interfaces\\IEndpointService.cs",
+              "RelativeDocumentMoniker": "CaptionGenerator.CORE\\Interfaces\\IEndpointService.cs",
+              "ToolTip": "D:\\neural network and arabization project\\github\\CaptionGenerator.CORE\\Interfaces\\IEndpointService.cs",
+              "RelativeToolTip": "CaptionGenerator.CORE\\Interfaces\\IEndpointService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T18:27:03.278Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "UserKey.cs",
               "DocumentMoniker": "D:\\neural network and arabization project\\github\\CaptionGenerator.CORE\\Entities\\UserKey.cs",
               "RelativeDocumentMoniker": "CaptionGenerator.CORE\\Entities\\UserKey.cs",
@@ -143,29 +287,25 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Key.cs",
-              "DocumentMoniker": "D:\\neural network and arabization project\\github\\CaptionGenerator.CORE\\Entities\\Key.cs",
-              "RelativeDocumentMoniker": "CaptionGenerator.CORE\\Entities\\Key.cs",
-              "ToolTip": "D:\\neural network and arabization project\\github\\CaptionGenerator.CORE\\Entities\\Key.cs",
-              "RelativeToolTip": "CaptionGenerator.CORE\\Entities\\Key.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 13,
+              "Title": "20240417152304_Update16.cs",
+              "DocumentMoniker": "D:\\neural network and arabization project\\github\\CaptionGenerator.EF\\Migrations\\20240417152304_Update16.cs",
+              "RelativeDocumentMoniker": "CaptionGenerator.EF\\Migrations\\20240417152304_Update16.cs",
+              "ToolTip": "D:\\neural network and arabization project\\github\\CaptionGenerator.EF\\Migrations\\20240417152304_Update16.cs",
+              "RelativeToolTip": "CaptionGenerator.EF\\Migrations\\20240417152304_Update16.cs",
+              "ViewState": "AQIAADMAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-17T13:52:13.531Z",
-              "EditorCaption": ""
-            },
+              "WhenOpened": "2024-04-17T15:23:04.869Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ApplicationUser.cs",
-              "DocumentMoniker": "D:\\neural network and arabization project\\github\\CaptionGenerator.CORE\\Entities\\ApplicationUser.cs",
-              "RelativeDocumentMoniker": "CaptionGenerator.CORE\\Entities\\ApplicationUser.cs",
-              "ToolTip": "D:\\neural network and arabization project\\github\\CaptionGenerator.CORE\\Entities\\ApplicationUser.cs",
-              "RelativeToolTip": "CaptionGenerator.CORE\\Entities\\ApplicationUser.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAA5AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-17T13:52:10.288Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             }
           ]
         }

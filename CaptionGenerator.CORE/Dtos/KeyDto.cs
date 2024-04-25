@@ -15,6 +15,7 @@ namespace CaptionGenerator.CORE.Dtos
 
     public class KeyUpdateRequest
     {
+        public int Usage { get; set; }
         public int Limit { get; set; }
         public int RateLimit { get; set; }
     }

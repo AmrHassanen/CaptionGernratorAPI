@@ -18,7 +18,7 @@ namespace CaptionGenerator.EF.Repositories
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public async Task<Key> CreateKeyAsync(KeyDto keyDto)
+        public async Task<Key> CreateKeyAsync(KeyDto keyDto, string userId)
         {
             if (keyDto == null)
             {
@@ -27,6 +27,7 @@ namespace CaptionGenerator.EF.Repositories
 
             var key = new Key
             {
+                KeyValue = Guid.NewGuid(),
                 Limit = keyDto.Limit,
                 RateLimit = keyDto.RateLimit
             };
@@ -34,8 +35,18 @@ namespace CaptionGenerator.EF.Repositories
             _context.Keys.Add(key);
             await _context.SaveChangesAsync();
 
+            var userKey = new UserKey
+            {
+                ApplicationUserId = userId,
+                KeyId = key.Id
+            };
+
+            _context.UserKeys.Add(userKey);
+            await _context.SaveChangesAsync();
+
             return key;
         }
+
 
         public async Task<bool> DeleteKeyAsync(int keyId)
         {
@@ -51,6 +62,14 @@ namespace CaptionGenerator.EF.Repositories
 
             return true;
         }
+
+        public async Task<Key> GetKeyByKeyValueAsync(string keyValue)
+        {
+            return await _context.Keys
+                .Include(k => k.UserKeys)
+                .FirstOrDefaultAsync(k => k.KeyValue.ToString() == keyValue);
+        }
+
 
         public async Task<List<Key>> GetKeysByUserIdAsync(string userId)
         {

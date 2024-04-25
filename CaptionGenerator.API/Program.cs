@@ -1,5 +1,6 @@
 using CaptionGenerator.API.Extensions;
 using CaptionGenerator.API.Extensions.Authentication;
+using CaptionGenerator.API.Middlewares;
 using CaptionGenerator.CORE.Entities;
 using CaptionGenerator.CORE.Interfaces;
 using CaptionGenerator.EF.Data;
@@ -57,6 +58,10 @@ namespace CaptionGenerator.API
 
 
             var app = builder.Build();
+
+            // retension RateLimitingMiddleware
+
+            app.UseMiddleware<RateLimitingMiddleware>();
 
             // Enable CORS
             app.UseCors(builder =>

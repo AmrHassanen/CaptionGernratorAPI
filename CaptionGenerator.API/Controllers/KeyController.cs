@@ -3,6 +3,7 @@ using CaptionGenerator.CORE.Interfaces;
 using CaptionGenerator.EF.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace CaptionGenerator.API.Controllers
@@ -48,7 +49,15 @@ namespace CaptionGenerator.API.Controllers
                     return BadRequest(ModelState);
                 }
 
-                var key = await _keyService.CreateKeyAsync(keyDto);
+                // Get the user's ID from the HttpContext.User property
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+                if (string.IsNullOrEmpty(userId))
+                {
+                    return Unauthorized();
+                }
+
+                var key = await _keyService.CreateKeyAsync(keyDto, userId);
 
                 return Ok(key);
             }
@@ -61,6 +70,7 @@ namespace CaptionGenerator.API.Controllers
                 return StatusCode(500, "An error occurred while processing your request.");
             }
         }
+
 
         [HttpPut("{keyId}")]
         public async Task<IActionResult> UpdateKey(int keyId, [FromBody] KeyUpdateRequest keyUpdateRequest)
