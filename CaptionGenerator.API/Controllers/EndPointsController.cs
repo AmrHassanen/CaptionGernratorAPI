@@ -1,11 +1,14 @@
-﻿using CaptionGenerator.CORE.Dtos;
+﻿using CaptionGenerator.API.Middlewares;
+using CaptionGenerator.CORE.Dtos;
 using CaptionGenerator.CORE.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using System;
 using System.Threading.Tasks;
 
 namespace CaptionGenerator.API.Controllers
 {
+    
     [ApiController]
     [Route("[controller]")]
     public class EndpointsController : ControllerBase

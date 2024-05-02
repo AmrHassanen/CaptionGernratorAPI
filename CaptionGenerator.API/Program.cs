@@ -61,7 +61,7 @@ namespace CaptionGenerator.API
 
             // retension RateLimitingMiddleware
 
-            app.UseMiddleware<RateLimitingMiddleware>();
+            //app.UseMiddleware<RateLimitingMiddleware>();
 
             // Enable CORS
             app.UseCors(builder =>

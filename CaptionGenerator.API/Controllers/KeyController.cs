@@ -1,6 +1,7 @@
 ﻿using CaptionGenerator.CORE.Dtos;
 using CaptionGenerator.CORE.Interfaces;
 using CaptionGenerator.EF.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Security.Claims;
@@ -10,6 +11,7 @@ namespace CaptionGenerator.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     public class KeyController : ControllerBase
     {
         private readonly IkeyService _keyService;
@@ -50,7 +52,7 @@ namespace CaptionGenerator.API.Controllers
                 }
 
                 // Get the user's ID from the HttpContext.User property
-                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var userId = User.FindFirstValue("uid");
 
                 if (string.IsNullOrEmpty(userId))
                 {
@@ -59,7 +61,10 @@ namespace CaptionGenerator.API.Controllers
 
                 var key = await _keyService.CreateKeyAsync(keyDto, userId);
 
-                return Ok(key);
+                var keys = await _keyService.GetKeysByUserIdAsync(userId);
+
+
+                return Ok(keys);
             }
             catch (ArgumentException ex)
             {

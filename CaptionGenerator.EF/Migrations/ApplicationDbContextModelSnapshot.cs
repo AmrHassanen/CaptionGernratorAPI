@@ -124,6 +124,9 @@ namespace CaptionGenerator.EF.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<Guid>("KeyValue")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("Limit")
                         .HasColumnType("INTEGER");
 
@@ -289,14 +292,14 @@ namespace CaptionGenerator.EF.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "73703b38-f867-47aa-8487-23492b589ec5",
+                            Id = "327321d3-e0af-4e97-9c40-7d643ec0328f",
                             ConcurrencyStamp = "1",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "0068ec38-6260-487d-a80e-2319e1d3d8a2",
+                            Id = "610d40b2-9ed7-4fd7-b20a-5c1281174e50",
                             ConcurrencyStamp = "2",
                             Name = "User",
                             NormalizedName = "USER"

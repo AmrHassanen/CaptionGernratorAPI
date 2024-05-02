@@ -1,4 +1,5 @@
-﻿using CaptionGenerator.CORE.Dtos;
+﻿using CaptionGenerator.API.Middlewares;
+using CaptionGenerator.CORE.Dtos;
 using CaptionGenerator.CORE.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -8,6 +9,7 @@ namespace CaptionGenerator.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [RateLimit]
     public class ServicesController : ControllerBase
     {
         private readonly IServiceUser _serviceUser;
