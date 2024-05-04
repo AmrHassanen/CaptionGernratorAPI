@@ -15,5 +15,9 @@ namespace CaptionGenerator.CORE.Entities
         // Define other properties as needed
         public int Limit { get; set; } = 1000;
         public int Usage { get; set; } = 0;
+
+
+       // public ICollection<Key> Keys { get; set; }
+
     }
 }

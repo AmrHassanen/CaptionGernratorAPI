@@ -115,7 +115,7 @@ namespace CaptionGenerator.EF.Migrations
 
                     b.HasIndex("ServiceId");
 
-                    b.ToTable("EndPoints");
+                    b.ToTable("EndPoints", (string)null);
                 });
 
             modelBuilder.Entity("CaptionGenerator.CORE.Entities.Key", b =>
@@ -138,7 +138,7 @@ namespace CaptionGenerator.EF.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Keys");
+                    b.ToTable("Keys", (string)null);
                 });
 
             modelBuilder.Entity("CaptionGenerator.CORE.Entities.Member", b =>
@@ -177,7 +177,7 @@ namespace CaptionGenerator.EF.Migrations
 
                     b.HasIndex("TeamId");
 
-                    b.ToTable("Members");
+                    b.ToTable("Members", (string)null);
                 });
 
             modelBuilder.Entity("CaptionGenerator.CORE.Entities.Service", b =>
@@ -207,7 +207,7 @@ namespace CaptionGenerator.EF.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Services");
+                    b.ToTable("Services", (string)null);
                 });
 
             modelBuilder.Entity("CaptionGenerator.CORE.Entities.Team", b =>
@@ -239,7 +239,7 @@ namespace CaptionGenerator.EF.Migrations
 
                     b.HasIndex("ServiceId");
 
-                    b.ToTable("Teams");
+                    b.ToTable("Teams", (string)null);
                 });
 
             modelBuilder.Entity("CaptionGenerator.CORE.Entities.UserKey", b =>
@@ -261,7 +261,7 @@ namespace CaptionGenerator.EF.Migrations
 
                     b.HasIndex("KeyId");
 
-                    b.ToTable("UserKeys");
+                    b.ToTable("UserKeys", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

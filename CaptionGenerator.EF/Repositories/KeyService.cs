@@ -29,7 +29,7 @@ namespace CaptionGenerator.EF.Repositories
             {
                 KeyValue = Guid.NewGuid(),
                 Limit = keyDto.Limit,
-               
+
             };
 
             _context.Keys.Add(key);

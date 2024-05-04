@@ -33,7 +33,15 @@ namespace CaptionGenerator.API.Controllers
                     return NotFound();
                 }
 
-                return Ok(keys);
+                var keyDtos = keys.Select(k => new NewKeyDto
+                {
+                    KeyValue = k.KeyValue.ToString(),
+                    Limit = k.Limit,
+                    Usage = k.Usage,
+                    RateLimit = k.RateLimit
+                }).ToList();
+
+                return Ok(keyDtos);
             }
             catch (Exception)
             {
@@ -61,10 +69,15 @@ namespace CaptionGenerator.API.Controllers
 
                 var key = await _keyService.CreateKeyAsync(keyDto, userId);
 
-                var keys = await _keyService.GetKeysByUserIdAsync(userId);
+                var newKeyDto = new NewKeyDto
+                {
+                    KeyValue = key.KeyValue.ToString(),
+                    Limit = key.Limit,
+                    Usage = key.Usage,
+                    RateLimit = key.RateLimit
+                };
 
-
-                return Ok(keys);
+                return Ok(newKeyDto);
             }
             catch (ArgumentException ex)
             {
@@ -75,6 +88,7 @@ namespace CaptionGenerator.API.Controllers
                 return StatusCode(500, "An error occurred while processing your request.");
             }
         }
+
 
 
         [HttpPut("{keyId}")]

@@ -23,6 +23,14 @@ public class AuthController : ControllerBase
 
         if (result.IsAuthenticated)
         {
+            // Set the token in cookies 
+            Response.Cookies.Append("accessToken", result.Token, new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true, // Set to true if using HTTPS 
+                SameSite = SameSiteMode.Strict // Adjust as needed 
+            });
+
             return Ok(result);
         }
         else
@@ -38,6 +46,14 @@ public class AuthController : ControllerBase
 
         if (result.IsAuthenticated)
         {
+            // Set the token in cookies 
+            Response.Cookies.Append("accessToken", result.Token, new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true, // Set to true if using HTTPS 
+                SameSite = SameSiteMode.Strict // Adjust as needed 
+            });
+
             return Ok(result);
         }
         else

@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace CaptionGenerator.CORE.Entities
 {
-    
+
     public class UserKey
     {
         [Key]
